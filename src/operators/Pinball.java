@@ -29,7 +29,8 @@ public class Pinball {
 			 * 		playing true (representa si se está jugando actualmente)
 			 * 		score 0 (representa la puntuación)
 			 * 		bounces 0 (representa los rebotes que lleva en la partida)
-			 * 3. La pelota se pone en juego y se elige una posición aleatoria del array hasta que la posición sea GAME OVER
+			 * 3. Se llama al método startPlaying():
+			 * 		La pelota se pone en juego y se elige una posición aleatoria del array hasta que la posición sea GAME OVER
 			 * 
 			 * INFO ADICIONAL:
 			 * 	Si la pelota cae en GAME OVER en la primera tirada, se le suma un punto de consolación y se sigue jugando.
@@ -49,25 +50,8 @@ public class Pinball {
 				this.score = 0;
 				this.bounces = 0;
 
-				while (playing == true) {
-					int nextMove = (int) (Math.random() * 10 - 1);
-					if (possiblePoints[nextMove] < 0 && bounces != 0) {
-						System.out.println("GAME OVER - La puntuación final de " + playerName + " fue: " + score + " puntos");
-						String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
-						System.out.println(mensajeFinal);
-						playing = false;
-					} else {
-						if (bounces == 0 && possiblePoints[nextMove] == -1) {
-							bounces++;
-							this.score += 1;
-							System.out.println("La puntuación actual es de 1 punto de consolación.");
-						} else {
-							bounces++;
-							this.score += possiblePoints[nextMove];
-							System.out.println("La puntuación actual es de: " + score + " puntos.");
-						}
-					}
-				}
+				startPlaying(playerName);
+				
 				break;
 
 			case (2):
@@ -84,26 +68,8 @@ public class Pinball {
 				this.score = 0;
 				this.bounces = 0;
 
-				while (playing == true) {
-					int nextMove = (int) (Math.random() * 10 - 1);
-					if (possiblePoints[nextMove] < 0 && bounces != 0) {
-						System.out.println("GAME OVER - La puntuación final de " + playerName + " fue: " + score + " puntos");
-						String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
-						System.out.println(mensajeFinal);
-						playing = false;
-					} else {
-						if (bounces == 0 && possiblePoints[nextMove] == -1) {
-							bounces++;
-							this.score += 1;
-							System.out.println("La puntuación actual es de 1 punto de consolación.");
-						} else {
-							bounces++;
-							this.score += possiblePoints[nextMove];
-							System.out.println("La puntuación actual es de: " + score + " puntos.");
-						}
-					}
-
-				}
+				startPlaying(playerName);
+				
 				break;
 
 			case (3):
@@ -120,25 +86,8 @@ public class Pinball {
 				this.score = 0;
 				this.bounces = 0;
 
-				while (playing == true) {
-					int nextMove = (int) (Math.random() * 10 - 1);
-					if (possiblePoints[nextMove] < 0 && bounces != 0) {
-						System.out.println("GAME OVER - La puntuación final de " + playerName + " fue: " + score + " puntos");
-						String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
-						System.out.println(mensajeFinal);
-						playing = false;
-					} else {
-						if (bounces == 0 && possiblePoints[nextMove] == -1) {
-							bounces++;
-							this.score += 1;
-							System.out.println("La puntuación actual es de 1 punto de consolación.");
-						} else {
-							bounces++;
-							this.score += possiblePoints[nextMove];
-							System.out.println("La puntuación actual es de: " + score + " puntos.");
-						}
-					}
-				}
+				startPlaying(playerName);
+				
 				break;
 
 			default:
@@ -146,5 +95,28 @@ public class Pinball {
 				break;
 			}
 		}
+	}
+	
+	private void startPlaying(String playerName) {
+		while (playing == true) {
+			int nextMove = (int) (Math.random() * 10 - 1);
+			if (possiblePoints[nextMove] < 0 && bounces != 0) {
+				System.out.println("GAME OVER - La puntuación final de " + playerName + " fue: " + score + " puntos");
+				String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
+				System.out.println(mensajeFinal);
+				playing = false;
+			} else {
+				if (bounces == 0 && possiblePoints[nextMove] == -1) {
+					bounces++;
+					this.score += 1;
+					System.out.println("La puntuación actual es de 1 punto de consolación.");
+				} else {
+					bounces++;
+					this.score += possiblePoints[nextMove];
+					System.out.println("La puntuación actual es de: " + score + " puntos.");
+				}
+			}
+		}
+		
 	}
 }
