@@ -93,10 +93,16 @@ public class Pinball {
 	}
 
 	private void startPlaying(String playerName) {
+		StringBuilder strGameOver = new StringBuilder();
+		strGameOver.append("La puntuación final de ");
+		strGameOver.append(playerName);
+		strGameOver.append(" fue: ");
 		while (playing == true) {
 			int nextMove = (int) (Math.random() * 10 - 1);
 			if (possiblePoints[nextMove] < 0 && bounces != 0) {
-				System.out.println("GAME OVER - La puntuación final de " + playerName + " fue: " + score + " puntos");
+				strGameOver.append(score);
+				strGameOver.append(" puntos");
+				System.out.println(strGameOver);
 				String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
 				System.out.println(mensajeFinal);
 				playing = false;
