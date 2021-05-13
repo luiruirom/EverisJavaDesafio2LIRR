@@ -23,18 +23,13 @@ public class Pinball {
 			// Se selecciona la dificultad, cuanto más bajo el número, más fácil el juego y menos "GAME_OVER" hay
 			switch (difficulty) {
 			/*
-			 * La lógica del programa en los tres casos es igual:
-			 * 1. Se rellena el array de posibilidades según la dificultad elegida
-			 * 2. Se establecen las variables de juego a su estado inicial: 
-			 * 		playing true (representa si se está jugando actualmente)
-			 * 		score 0 (representa la puntuación)
-			 * 		bounces 0 (representa los rebotes que lleva en la partida)
-			 * 3. Se llama al método startPlaying():
-			 * 		La pelota se pone en juego y se elige una posición aleatoria del array hasta que la posición sea GAME OVER
+			 * La lógica del programa en los tres casos es igual: 1. Se rellena el array de posibilidades según la dificultad elegida 2. Se establecen las
+			 * variables de juego a su estado inicial: playing true (representa si se está jugando actualmente) score 0 (representa la puntuación) bounces 0
+			 * (representa los rebotes que lleva en la partida) 3. Se llama al método startPlaying(): La pelota se pone en juego y se elige una posición
+			 * aleatoria del array hasta que la posición sea GAME OVER
 			 * 
-			 * INFO ADICIONAL:
-			 * 	Si la pelota cae en GAME OVER en la primera tirada, se le suma un punto de consolación y se sigue jugando.
-			 * 	Si se consiguen más de 1000 puntos en un juego, se te felicita
+			 * INFO ADICIONAL: Si la pelota cae en GAME OVER en la primera tirada, se le suma un punto de consolación y se sigue jugando. 
+			 * Si se consiguen más de 1000 puntos en un juego, se te felicita
 			 */
 			case (1):
 				possiblePoints[0] = BUMPER;
@@ -51,7 +46,7 @@ public class Pinball {
 				this.bounces = 0;
 
 				startPlaying(playerName);
-				
+
 				break;
 
 			case (2):
@@ -69,7 +64,7 @@ public class Pinball {
 				this.bounces = 0;
 
 				startPlaying(playerName);
-				
+
 				break;
 
 			case (3):
@@ -87,7 +82,7 @@ public class Pinball {
 				this.bounces = 0;
 
 				startPlaying(playerName);
-				
+
 				break;
 
 			default:
@@ -96,7 +91,7 @@ public class Pinball {
 			}
 		}
 	}
-	
+
 	private void startPlaying(String playerName) {
 		while (playing == true) {
 			int nextMove = (int) (Math.random() * 10 - 1);
@@ -117,6 +112,5 @@ public class Pinball {
 				}
 			}
 		}
-		
 	}
 }
