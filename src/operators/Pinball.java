@@ -93,10 +93,13 @@ public class Pinball {
 	}
 
 	private void startPlaying(String playerName) {
+		// Creamos dos objetos StringBuilder para los mensajes de la aplicación
 		StringBuilder strGameOver = new StringBuilder();
 		strGameOver.append("La puntuación final de ");
 		strGameOver.append(playerName);
 		strGameOver.append(" fue: ");
+		
+		StringBuilder strCurrentPoints = new StringBuilder();
 		while (playing == true) {
 			int nextMove = (int) (Math.random() * 10 - 1);
 			if (possiblePoints[nextMove] < 0 && bounces != 0) {
@@ -114,7 +117,11 @@ public class Pinball {
 				} else {
 					bounces++;
 					this.score += possiblePoints[nextMove];
-					System.out.println("La puntuación actual es de: " + score + " puntos.");
+					strCurrentPoints.append("La puntuacion actual es de: ");
+					strCurrentPoints.append(score);
+					strCurrentPoints.append(" puntos.");
+					System.out.println(strCurrentPoints);
+					strCurrentPoints.setLength(0);
 				}
 			}
 		}
