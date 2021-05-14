@@ -100,8 +100,10 @@ public class Pinball {
 		strGameOver.append(" fue: ");
 		
 		StringBuilder strCurrentPoints = new StringBuilder();
+		
 		while (playing == true) {
 			int nextMove = (int) (Math.random() * 10 - 1);
+			// Lógica para que si la pelota cae en Game Over y no es la primera tirada, se acabe la partida
 			if (possiblePoints[nextMove] < 0 && bounces != 0) {
 				strGameOver.append(score);
 				strGameOver.append(" puntos");
@@ -110,10 +112,12 @@ public class Pinball {
 				System.out.println(mensajeFinal);
 				playing = false;
 			} else {
+				// Primero se comprueba que la primera vez que la pelota cae, no sea en game over
 				if (bounces == 0 && possiblePoints[nextMove] == -1) {
 					bounces++;
 					this.score += 1;
 					System.out.println("La puntuación actual es de 1 punto de consolación.");
+				// A partir de aquí la pelota puede caer en cualquier posición del pinball
 				} else {
 					bounces++;
 					this.score += possiblePoints[nextMove];
