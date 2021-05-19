@@ -17,6 +17,12 @@ public class Pinball {
 	// Se añade una variable bounces para que no haya posibilidad de perder sin conseguir puntos
 	int bounces = 0;
 
+	/**
+	 * Método en el que se rellena el array dependiendo de la dificultad y en el que se incializa el método que contiene la lógica de la aplicación
+	 * 
+	 * @param playerName
+	 * @param difficulty
+	 */
 	public void launchBall(String playerName, int difficulty) {
 		// Se comprueba que en la variable playerName entra un objeto de tipo String
 		if (playerName instanceof String) {
@@ -93,12 +99,18 @@ public class Pinball {
 		}
 	}
 
+	/**
+	 * Método con la lógica del juego en el que se suman puntos y se va actualizando la información para el usuario Depende de la variable lives (vidas) para
+	 * tener 3 intentos
+	 * 
+	 * @param playerName
+	 */
 	private void startPlaying(String playerName) {
 		// Creamos tres objetos StringBuilder para los mensajes de la aplicación
 		StringBuilder strGameOver = new StringBuilder();
 		StringBuilder strCurrentPoints = new StringBuilder();
 		StringBuilder strLivesLeft = new StringBuilder();
-		
+
 		// Se crea un bucle for para representar que hay 3 vidas para jugar
 		for (int i = 1; i < 4; i++) {
 			// Se obtienen las vidas que quedan aprovechando la variable i del for
@@ -107,7 +119,7 @@ public class Pinball {
 				int nextMove = (int) (Math.random() * 10 - 1);
 				// Lógica para cuando acaba la partida, en la que se dan los mensajes al jugador
 				if (possiblePoints[nextMove] < 0 && bounces != 0) {
-					// Construcción del mensaje de puntuación 
+					// Construcción del mensaje de puntuación
 					strGameOver.append("La puntuación final de ");
 					strGameOver.append(playerName);
 					strGameOver.append(" fue: ");
@@ -115,7 +127,7 @@ public class Pinball {
 					strGameOver.append(" puntos");
 					strGameOver.setLength(0);
 					System.out.println(strGameOver);
-					// Si se consiguen más de 1000 puntos, el programa te felicita 
+					// Si se consiguen más de 1000 puntos, el programa te felicita
 					String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
 					System.out.println(mensajeFinal);
 					System.out.println();
