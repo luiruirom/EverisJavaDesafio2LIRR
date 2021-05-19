@@ -120,13 +120,6 @@ public class Pinball {
 				// Lógica para cuando acaba la partida, en la que se dan los mensajes al jugador
 				if (possiblePoints[nextMove] < 0 && bounces != 0) {
 					// Construcción del mensaje de puntuación
-					strGameOver.append("La puntuación final de ");
-					strGameOver.append(playerName);
-					strGameOver.append(" fue: ");
-					strGameOver.append(score);
-					strGameOver.append(" puntos");
-					strGameOver.setLength(0);
-					System.out.println(strGameOver);
 					// Si se consiguen más de 1000 puntos, el programa te felicita
 					String mensajeFinal = (score > 1000) ? "¡Enhorabuena! ¡Has conseguido más de 1000 puntos!" : "Más suerte la próxima vez...";
 					System.out.println(mensajeFinal);
@@ -158,5 +151,11 @@ public class Pinball {
 			}
 			this.playing = true;
 		}
+		strGameOver.append("La puntuación final de ");
+		strGameOver.append(playerName);
+		strGameOver.append(" fue: ");
+		strGameOver.append(score);
+		strGameOver.append(" puntos");
+		System.out.println(strGameOver);
 	}
 }
